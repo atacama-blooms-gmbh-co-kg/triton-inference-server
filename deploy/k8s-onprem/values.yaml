@@ -29,6 +29,8 @@ tags:
   loadBalancing: true
   openshift: false
 
+imagePullSecrets: []
+
 image:
   imageName: nvcr.io/nvidia/tritonserver:25.11-py3
   pullPolicy: IfNotPresent
