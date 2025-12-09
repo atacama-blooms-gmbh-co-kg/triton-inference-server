@@ -40,6 +40,10 @@ image:
   modelRepositoryPath: /srv/models
   numGpus: 1
 
+gpu:
+  enabled: false
+  runtimeClassName: nvidia
+  resources: {}
 # add server args here e.g. --grpc-use-ssl, --grpc-server-certs, repository-poll-secs, etc
 serverArgs:
   - '--model-repository=/models'
