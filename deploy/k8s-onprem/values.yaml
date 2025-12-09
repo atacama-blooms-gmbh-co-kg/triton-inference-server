@@ -32,6 +32,8 @@ tags:
 image:
   imageName: nvcr.io/nvidia/tritonserver:25.11-py3
   pullPolicy: IfNotPresent
+  externalModelsVolumeMount:
+    enabled: false
   modelRepositoryServer: < Replace with the IP Address of your file server >
   modelRepositoryPath: /srv/models
   numGpus: 1
