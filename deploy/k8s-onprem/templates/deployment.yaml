@@ -53,19 +53,22 @@ spec:
     spec:
       serviceAccountName: {{ template "triton-inference-server.fullname" . }}
       volumes:
+        {{- if .Values.image.externalModelsVolumeMount.enabled}}
         - name: models
           nfs:
             server: {{ .Values.image.modelRepositoryServer }}
             path: {{ .Values.image.modelRepositoryPath }}
             readOnly: false
+        {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.imageName }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.image.externalModelsVolumeMount.enabled}}
           volumeMounts:
             - mountPath: /models
               name: models
-
+          {{- end }}
           resources:
             limits:
               nvidia.com/gpu: {{ .Values.image.numGpus }}
